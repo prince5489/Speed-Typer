@@ -1,0 +1,1187 @@
+/* ==========================================================================
+   Design System & Custom Themes
+   ========================================================================== */
+
+/* Global Variables and Cyberpunk Theme (Default) */
+:root {
+  --font-sans: 'Outfit', sans-serif;
+  --font-mono: 'Fira Code', monospace;
+  
+  /* Cyberpunk Palette */
+  --bg-app: #090510;
+  --bg-glow: radial-gradient(circle at 50% 50%, rgba(186, 38, 255, 0.15) 0%, rgba(0, 240, 255, 0.08) 50%, transparent 100%);
+  --panel-bg: rgba(22, 12, 38, 0.45);
+  --panel-border: rgba(186, 38, 255, 0.2);
+  --panel-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  
+  --text-main: #f1f5f9;
+  --text-muted: #64748b;
+  --accent: #ba26ff;
+  --accent-glow: 0 0 15px rgba(186, 38, 255, 0.6);
+  --accent-secondary: #00f0ff;
+  
+  --char-default: #64748b;
+  --char-correct: #39ff14;
+  --char-correct-glow: 0 0 8px rgba(57, 255, 20, 0.4);
+  --char-incorrect: #ff0055;
+  --char-incorrect-bg: rgba(255, 0, 85, 0.15);
+  --char-extra: #ff9f00;
+  
+  --btn-primary-bg: linear-gradient(135deg, #ba26ff 0%, #00f0ff 100%);
+  --btn-primary-text: #090510;
+  --btn-danger-bg: rgba(255, 0, 85, 0.15);
+  --btn-danger-border: rgba(255, 0, 85, 0.4);
+  --btn-danger-text: #ff0055;
+  --badge-easy: #00f0ff;
+  --badge-medium: #ba26ff;
+  --badge-hard: #ff0055;
+}
+
+/* Sunset Glow Theme */
+[data-theme="sunset"] {
+  --bg-app: #120b0b;
+  --bg-glow: radial-gradient(circle at 50% 50%, rgba(255, 94, 0, 0.15) 0%, rgba(255, 208, 0, 0.08) 50%, transparent 100%);
+  --panel-bg: rgba(31, 18, 18, 0.45);
+  --panel-border: rgba(255, 94, 0, 0.2);
+  
+  --text-main: #fcfcfc;
+  --text-muted: #857070;
+  --accent: #ff5e00;
+  --accent-glow: 0 0 15px rgba(255, 94, 0, 0.6);
+  --accent-secondary: #ffd000;
+  
+  --char-default: #857070;
+  --char-correct: #ffd000;
+  --char-correct-glow: 0 0 8px rgba(255, 208, 0, 0.4);
+  --char-incorrect: #ef4444;
+  --char-incorrect-bg: rgba(239, 68, 68, 0.15);
+  
+  --btn-primary-bg: linear-gradient(135deg, #ff5e00 0%, #ffd000 100%);
+  --btn-primary-text: #120b0b;
+  --badge-easy: #ffd000;
+  --badge-medium: #ff5e00;
+  --badge-hard: #ef4444;
+}
+
+/* Glass Frost Theme */
+[data-theme="frost"] {
+  --bg-app: #0b111e;
+  --bg-glow: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.15) 0%, rgba(45, 212, 191, 0.08) 50%, transparent 100%);
+  --panel-bg: rgba(15, 23, 42, 0.45);
+  --panel-border: rgba(56, 189, 248, 0.2);
+  
+  --text-main: #f8fafc;
+  --text-muted: #64748b;
+  --accent: #38bdf8;
+  --accent-glow: 0 0 15px rgba(56, 189, 248, 0.6);
+  --accent-secondary: #2dd4bf;
+  
+  --char-default: #64748b;
+  --char-correct: #38bdf8;
+  --char-correct-glow: 0 0 8px rgba(56, 189, 248, 0.4);
+  --char-incorrect: #f43f5e;
+  --char-incorrect-bg: rgba(244, 63, 94, 0.15);
+  
+  --btn-primary-bg: linear-gradient(135deg, #38bdf8 0%, #2dd4bf 100%);
+  --btn-primary-text: #0b111e;
+  --badge-easy: #2dd4bf;
+  --badge-medium: #38bdf8;
+  --badge-hard: #f43f5e;
+}
+
+/* Emerald Forest Theme */
+[data-theme="forest"] {
+  --bg-app: #030a07;
+  --bg-glow: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.15) 0%, rgba(52, 211, 153, 0.08) 50%, transparent 100%);
+  --panel-bg: rgba(8, 25, 18, 0.45);
+  --panel-border: rgba(16, 185, 129, 0.25);
+  
+  --text-main: #ecfdf5;
+  --text-muted: #5b7065;
+  --accent: #10b981;
+  --accent-glow: 0 0 15px rgba(16, 185, 129, 0.6);
+  --accent-secondary: #34d399;
+  
+  --char-default: #5b7065;
+  --char-correct: #34d399;
+  --char-correct-glow: 0 0 8px rgba(52, 211, 153, 0.4);
+  --char-incorrect: #fb7185;
+  --char-incorrect-bg: rgba(251, 113, 133, 0.15);
+  
+  --btn-primary-bg: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+  --btn-primary-text: #030a07;
+  --badge-easy: #34d399;
+  --badge-medium: #10b981;
+  --badge-hard: #fb7185;
+}
+
+/* ==========================================================================
+   Basic Layout & Base Elements
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Glowing Backdrops */
+.glass-bg-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-glow);
+  z-index: -1;
+  pointer-events: none;
+  transition: background 0.6s ease;
+  animation: bgPulse 20s infinite alternate ease-in-out;
+}
+
+@keyframes bgPulse {
+  0% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.08) translate(1%, -1%); }
+  100% { transform: scale(0.95) translate(-1%, 1%); }
+}
+
+.app-container {
+  width: 100%;
+  max-width: 1000px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  z-index: 2;
+}
+
+/* Glassmorphism Panel Helper */
+.glass-panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  box-shadow: var(--panel-shadow);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 20px;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+/* ==========================================================================
+   App Header
+   ========================================================================== */
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--accent);
+  filter: drop-shadow(0 0 4px var(--accent));
+  transition: transform 0.3s ease;
+}
+
+.logo:hover .logo-icon {
+  transform: rotate(-10deg) scale(1.1);
+}
+
+.logo h1 {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: linear-gradient(to right, var(--text-main), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Icons and Controls */
+.icon-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.icon-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+.icon-btn:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--panel-border);
+}
+
+.icon-btn.active {
+  color: var(--accent);
+  filter: drop-shadow(0 0 5px var(--accent));
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Tooltip implementation */
+.tooltip {
+  position: relative;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.2s ease;
+  z-index: 10;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* Theme Selector Styles */
+.theme-select-container {
+  position: relative;
+}
+
+.theme-select {
+  appearance: none;
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  color: var(--text-main);
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding-right: 32px;
+}
+
+.theme-select-container::after {
+  content: '▼';
+  font-size: 8px;
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.theme-select:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 8px rgba(186, 38, 255, 0.2);
+}
+
+.theme-select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* ==========================================================================
+   Config Section (Difficulty & Time Tabs)
+   ========================================================================== */
+
+.test-config-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 14px 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.config-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.config-label {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+/* Custom Segmented Controls (Radio Tabs) */
+.radio-tabs {
+  display: flex;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 4px;
+  border-radius: 10px;
+}
+
+.radio-tab {
+  cursor: pointer;
+}
+
+.radio-tab input {
+  display: none;
+}
+
+.radio-tab span {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+}
+
+.radio-tab input:checked + span {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  color: var(--accent);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  font-weight: 800;
+}
+
+.radio-tab:hover span {
+  color: var(--text-main);
+}
+
+.config-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--panel-border);
+}
+
+@media (max-width: 650px) {
+  .test-config-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+  
+  .config-group {
+    justify-content: space-between;
+  }
+  
+  .config-divider {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Stats HUD (Timer, Live WPM, Accuracy)
+   ========================================================================== */
+
+.stats-hud {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.hud-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 16px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hud-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  opacity: 0.7;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.hud-item:hover .hud-icon {
+  color: var(--accent);
+  transform: scale(1.15);
+}
+
+.hud-val {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+  letter-spacing: -1px;
+  font-family: var(--font-mono);
+  transition: all 0.3s ease;
+}
+
+.hud-lbl {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+@media (max-width: 650px) {
+  .stats-hud {
+    gap: 12px;
+  }
+  .hud-val {
+    font-size: 28px;
+  }
+}
+
+/* ==========================================================================
+   Typing Container (The Core Mechanic)
+   ========================================================================== */
+
+.typing-container-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.typing-box-container {
+  position: relative;
+  min-height: 170px;
+  max-height: 250px;
+  padding: 28px 32px;
+  overflow: hidden;
+  cursor: text;
+}
+
+/* Words container styles */
+.words-container {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 16px;
+  column-gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  line-height: 1.5;
+  outline: none;
+  text-align: left;
+  /* Support smooth scrolling on active lines */
+  transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  width: 100%;
+  transform: translateY(0);
+}
+
+/* Styling Words & Characters */
+.word {
+  display: inline-flex;
+  position: relative;
+}
+
+.char {
+  color: var(--char-default);
+  position: relative;
+  transition: color 0.1s ease, background-color 0.15s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.char.correct {
+  color: var(--char-correct);
+  text-shadow: var(--char-correct-glow);
+}
+
+.char.incorrect {
+  color: var(--char-incorrect);
+  background: var(--char-incorrect-bg);
+  border-radius: 4px;
+}
+
+.char.extra {
+  color: var(--char-extra);
+}
+
+/* Caret (Blinking Gliding Cursor) */
+.caret {
+  position: absolute;
+  width: 3px;
+  height: 26px;
+  background-color: var(--accent);
+  box-shadow: 0 0 8px var(--accent), 0 0 16px var(--accent);
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: left 0.05s cubic-bezier(0.16, 1, 0.3, 1), top 0.08s cubic-bezier(0.16, 1, 0.3, 1), height 0.08s ease;
+  pointer-events: none;
+  z-index: 3;
+  border-radius: 2px;
+}
+
+/* Progress bar inside typing container */
+.progress-bar-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+  z-index: 10;
+}
+.progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--btn-primary-bg);
+  box-shadow: var(--accent-glow);
+  transition: width 0.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Shake Animation for Typos */
+.shake-anim {
+  animation: shakeCard 0.15s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes shakeCard {
+  10%, 90% { transform: translate3d(-1.5px, 0, 0); }
+  20%, 80% { transform: translate3d(2.5px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-3.5px, 0, 0); }
+  40%, 60% { transform: translate3d(3.5px, 0, 0); }
+}
+
+/* Caret blinking state when idle */
+.caret.blinking {
+  animation: caretBlink 1s infinite steps(2, start);
+  opacity: 1;
+}
+
+.caret.typing {
+  opacity: 1;
+}
+
+@keyframes caretBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Hidden Input Field that catches focus */
+.hidden-input-field {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  left: -9999px;
+  top: 0;
+  z-index: -100;
+}
+
+/* Focus Overlay Alert */
+.focus-alert-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(9, 5, 16, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  border-radius: 20px;
+  z-index: 5;
+}
+
+.typing-box-container:focus-within .focus-alert-overlay {
+  opacity: 0;
+}
+
+.alert-icon {
+  width: 36px;
+  height: 36px;
+  color: var(--accent);
+  animation: pulseAlert 2s infinite ease-in-out;
+}
+
+.focus-alert-overlay span {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--text-main);
+}
+
+@keyframes pulseAlert {
+  0%, 100% { transform: scale(1); filter: opacity(0.8); }
+  50% { transform: scale(1.08); filter: opacity(1) drop-shadow(0 0 6px var(--accent)); }
+}
+
+/* Loader animations */
+.loader-pulse {
+  color: var(--text-muted);
+  width: 100%;
+  text-align: center;
+  padding: 40px;
+  font-style: italic;
+  animation: loaderPulse 1.5s infinite ease-in-out;
+}
+
+@keyframes loaderPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.9; }
+}
+
+/* Under Typing Box Buttons */
+.typing-controls {
+  display: flex;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   Buttons (Glass & Primary styling)
+   ========================================================================== */
+
+.glass-btn {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  color: var(--text-main);
+  padding: 12px 28px;
+  border-radius: 14px;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.glass-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  border-color: var(--accent);
+}
+
+.glass-btn:active {
+  transform: translateY(0);
+}
+
+.btn-icon {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.4s ease;
+}
+
+#restart-btn:hover .btn-icon {
+  transform: rotate(180deg);
+}
+
+.primary-btn {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border: none;
+  font-weight: 800;
+}
+
+.primary-btn:hover {
+  filter: brightness(1.1);
+  box-shadow: var(--accent-glow);
+}
+
+.primary-btn:hover .btn-icon {
+  color: var(--btn-primary-text);
+}
+
+.danger-btn {
+  background: var(--btn-danger-bg);
+  border: 1px solid var(--btn-danger-border);
+  color: var(--btn-danger-text);
+}
+
+.danger-btn:hover {
+  background: var(--btn-danger-text);
+  color: #fff;
+  border-color: transparent;
+}
+
+/* ==========================================================================
+   Modals (Native HTML Dialog Overlays)
+   ========================================================================== */
+
+/* Styling the base dialog overlay */
+.glass-modal-dialog {
+  margin: auto;
+  border: none;
+  background: transparent;
+  outline: none;
+  z-index: 100;
+}
+
+/* Dialog Container Box */
+.dialog-content {
+  width: 90vw;
+  max-width: 520px;
+  background: rgba(18, 10, 32, 0.85);
+  border: 1px solid var(--panel-border);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 24px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  color: var(--text-main);
+}
+
+[data-theme="sunset"] .dialog-content { background: rgba(26, 15, 15, 0.85); }
+[data-theme="frost"] .dialog-content { background: rgba(15, 23, 42, 0.85); }
+[data-theme="forest"] .dialog-content { background: rgba(8, 25, 18, 0.85); }
+
+/* Dialog Header */
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dialog-header h2 {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.close-dialog-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 28px;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.close-dialog-btn:hover {
+  color: var(--accent-secondary);
+}
+
+/* Dialog Body Content */
+.dialog-body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Results Trophy Header */
+.trophy-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--panel-border);
+}
+
+.trophy-emoji {
+  font-size: 52px;
+  filter: drop-shadow(0 0 10px var(--accent));
+  animation: bounceTrophy 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes bounceTrophy {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-8px); }
+}
+
+.trophy-display h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--accent-secondary);
+}
+
+/* Results Grid Display */
+.results-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.result-card {
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.res-val {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-main);
+  font-family: var(--font-mono);
+}
+
+.res-lbl {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+.result-card:first-child .res-val {
+  color: var(--accent);
+  font-size: 36px;
+}
+
+/* Typist Level & Rank Progress Styling */
+.level-progress-container {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--panel-border);
+  border-radius: 16px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.level-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.level-badge {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--btn-primary-text);
+  background: var(--btn-primary-bg);
+  padding: 4px 10px;
+  border-radius: 8px;
+  box-shadow: var(--accent-glow);
+  text-shadow: none;
+}
+
+#level-name {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--accent-secondary);
+}
+
+.xp-bar-track {
+  width: 100%;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.xp-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--btn-primary-bg);
+  box-shadow: var(--accent-glow);
+  border-radius: 5px;
+  transition: width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.level-next-tip {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* Muscle Memory Analysis styling */
+.analysis-container {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--panel-border);
+  border-radius: 16px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.analysis-header-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--accent-secondary);
+}
+
+.analysis-header-title h4 {
+  font-size: 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.analysis-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--accent-secondary);
+  filter: drop-shadow(0 0 3px var(--accent-secondary));
+}
+
+.analysis-stats {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 10px;
+}
+
+.analysis-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.analysis-badge-title {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.analysis-badge-val {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--char-incorrect);
+  background: var(--char-incorrect-bg);
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 0, 85, 0.2);
+}
+
+.analysis-badge-val.perfect {
+  color: var(--char-correct);
+  background: rgba(57, 255, 20, 0.1);
+  border-color: rgba(57, 255, 20, 0.2);
+  text-shadow: var(--char-correct-glow);
+}
+
+.analysis-tip-card {
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 3px solid var(--accent);
+  padding: 10px 14px;
+  border-radius: 0 10px 10px 0;
+}
+
+.analysis-tip-card p {
+  font-size: 13px;
+  color: var(--text-main);
+  line-height: 1.45;
+}
+
+.dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.dialog-footer .glass-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* High Scores list styling */
+.records-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.record-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.record-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.record-badge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.easy-badge { background: rgba(0, 240, 255, 0.15); color: var(--badge-easy); }
+.medium-badge { background: rgba(186, 38, 255, 0.15); color: var(--badge-medium); }
+.hard-badge { background: rgba(255, 0, 85, 0.15); color: var(--badge-hard); }
+
+.record-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.record-val {
+  font-size: 20px;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  color: var(--text-main);
+}
+
+.dialog-info-box {
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 3px solid var(--accent);
+  padding: 12px;
+  border-radius: 0 8px 8px 0;
+}
+
+.dialog-info-box p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   Modern dialog animations (using @starting-style & top-layer transitions)
+   ========================================================================== */
+
+/* Style the native ::backdrop pseudo-element */
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0px);
+  transition: 
+    display 0.3s allow-discrete, 
+    overlay 0.3s allow-discrete, 
+    background-color 0.3s ease-out, 
+    backdrop-filter 0.3s ease-out;
+}
+
+dialog[open]::backdrop {
+  background-color: rgba(9, 5, 16, 0.7);
+  backdrop-filter: blur(6px);
+  
+  @starting-style {
+    background-color: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
+  }
+}
+
+/* Animate the dialog overlay box */
+dialog {
+  opacity: 0;
+  transform: scale(0.92) translateY(10px);
+  transition-property: opacity, transform, display, overlay;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-behavior: allow-discrete;
+}
+
+dialog[open] {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+
+  @starting-style {
+    opacity: 0;
+    transform: scale(0.92) translateY(10px);
+  }
+}
+
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  dialog, dialog::backdrop {
+    transform: none !important;
+    transition-duration: 0.1s !important;
+  }
+  @starting-style {
+    dialog[open], dialog[open]::backdrop {
+      transform: none !important;
+    }
+  }
+  .caret {
+    transition: none !important;
+  }
+}
+
+/* ==========================================================================
+   Footer & Keyboard shortcuts
+   ========================================================================== */
+
+.app-footer {
+  text-align: center;
+}
+
+.app-footer p {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+kbd {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  color: var(--text-main);
+  border-radius: 6px;
+  padding: 3px 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+}

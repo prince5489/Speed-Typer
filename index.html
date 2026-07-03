@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cyberpunk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Test your typing speed and accuracy in real-time with Speed Typer. Features multiple difficulties, themes, and typing sound effects.">
+  <title>Speed Typer | Typing Speed and Accuracy Test</title>
+  <!-- Google Fonts for premium typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="glass-bg-glow"></div>
+  
+  <div class="app-container">
+    <!-- Header Area -->
+    <header class="app-header">
+      <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-icon">
+          <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+          <line x1="6" y1="8" x2="6.01" y2="8"></line>
+          <line x1="10" y1="8" x2="10.01" y2="8"></line>
+          <line x1="14" y1="8" x2="14.01" y2="8"></line>
+          <line x1="18" y1="8" x2="18.01" y2="8"></line>
+          <line x1="6" y1="12" x2="6.01" y2="12"></line>
+          <line x1="18" y1="12" x2="18.01" y2="12"></line>
+          <line x1="7" y1="16" x2="17" y2="16"></line>
+          <line x1="10" y1="12" x2="14" y2="12"></line>
+        </svg>
+        <h1>Speed Typer</h1>
+      </div>
+      
+      <div class="header-controls">
+        <!-- Sound Effect Toggle -->
+        <button id="sound-toggle" class="icon-btn tooltip" data-tooltip="Toggle typing sounds">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sound-on-icon">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sound-off-icon hidden">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+          </svg>
+        </button>
+
+        <!-- High Scores Panel Trigger -->
+        <button id="stats-trigger" class="icon-btn tooltip" data-tooltip="View High Scores">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="7"></circle>
+            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+          </svg>
+        </button>
+
+        <!-- Theme Dropdown Selector -->
+        <div class="theme-select-container">
+          <select id="theme-selector" class="theme-select">
+            <option value="cyberpunk">Cyberpunk 🌌</option>
+            <option value="sunset">Sunset Glow 🌅</option>
+            <option value="frost">Glass Frost ❄️</option>
+            <option value="forest">Emerald Forest 🌲</option>
+          </select>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <!-- Main Controller Panel -->
+      <section class="test-config-section glass-panel">
+        <!-- Mode Tabs: Random Words vs. Topic Essay -->
+        <div class="config-group">
+          <span class="config-label">Mode</span>
+          <div class="radio-tabs" id="mode-tabs">
+            <label class="radio-tab">
+              <input type="radio" name="typemode" value="words" checked>
+              <span>Words</span>
+            </label>
+            <label class="radio-tab">
+              <input type="radio" name="typemode" value="essay">
+              <span>Essay</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="config-divider"></div>
+
+        <!-- Difficulty group (only visible when mode is words) -->
+        <div class="config-group" id="difficulty-group">
+          <span class="config-label">Difficulty</span>
+          <div class="radio-tabs" id="difficulty-tabs">
+            <label class="radio-tab">
+              <input type="radio" name="difficulty" value="easy" checked>
+              <span>Easy</span>
+            </label>
+            <label class="radio-tab">
+              <input type="radio" name="difficulty" value="medium">
+              <span>Medium</span>
+            </label>
+            <label class="radio-tab">
+              <input type="radio" name="difficulty" value="hard">
+              <span>Hard</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Topic selection group (only visible when mode is essay) -->
+        <div class="config-group hidden" id="topic-group">
+          <span class="config-label">Topic</span>
+          <div class="theme-select-container">
+            <select id="topic-selector" class="theme-select">
+              <option value="mountains">Mountains 🏔️</option>
+              <option value="water">Water & Life 💧</option>
+              <option value="technology">Technology 💻</option>
+              <option value="space">Space & Stars 🚀</option>
+              <option value="forests">Forests & Nature 🌲</option>
+              <option value="history">History & Time ⏳</option>
+              <option value="art">Art & Creativity 🎨</option>
+              <option value="sports">Sports & Fitness ⚽</option>
+              <option value="food">Food & Cooking 🍳</option>
+              <option value="music">Music & Sound 🎵</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="config-divider" id="config-divider-second"></div>
+
+        <!-- Time tabs selection -->
+        <div class="config-group">
+          <span class="config-label">Time Limit</span>
+          <div class="radio-tabs" id="time-tabs">
+            <label class="radio-tab">
+              <input type="radio" name="time" value="15">
+              <span>15s</span>
+            </label>
+            <label class="radio-tab">
+              <input type="radio" name="time" value="30" checked>
+              <span>30s</span>
+            </label>
+            <label class="radio-tab">
+              <input type="radio" name="time" value="60">
+              <span>60s</span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats HUD Panel -->
+      <section class="stats-hud">
+        <div class="hud-item glass-panel">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hud-icon">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span class="hud-val" id="hud-timer">30</span>
+          <span class="hud-lbl">Time left</span>
+        </div>
+        <div class="hud-item glass-panel">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hud-icon">
+            <path d="M2 12h20"></path>
+            <path d="M20 12a8 8 0 0 0-16 0"></path>
+            <path d="M12 12L8 8"></path>
+          </svg>
+          <span class="hud-val" id="hud-wpm">0</span>
+          <span class="hud-lbl">Live WPM</span>
+        </div>
+        <div class="hud-item glass-panel">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hud-icon">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="12" r="6"></circle>
+            <circle cx="12" cy="12" r="2"></circle>
+          </svg>
+          <span class="hud-val" id="hud-accuracy">100%</span>
+          <span class="hud-lbl">Accuracy</span>
+        </div>
+      </section>
+
+      <!-- Typing Field Panel -->
+      <section class="typing-container-wrapper">
+        <div class="typing-box-container glass-panel" id="typing-card">
+          <!-- Progress bar line at the top edge of the card -->
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" id="test-progress-bar"></div>
+          </div>
+          
+          <!-- Text Box Area -->
+          <div class="words-container" id="words-wrapper">
+            <!-- Words and letters will be injected here dynamically by JavaScript -->
+            <div class="loader-pulse">Loading words...</div>
+          </div>
+          
+          <!-- Caret (blinking cursor indicator) -->
+          <div class="caret" id="custom-caret"></div>
+
+          <!-- Hidden textarea to capture keyboard focus safely on desktop and mobile -->
+          <textarea 
+            id="hidden-input" 
+            class="hidden-input-field" 
+            autocorrect="off" 
+            autocapitalize="off" 
+            spellcheck="false" 
+            autocomplete="off" 
+            rows="1"
+            aria-label="Start typing here to begin the test"
+          ></textarea>
+          
+          <div class="focus-alert-overlay" id="focus-alert">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="alert-icon">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <span>Click here to focus and type</span>
+          </div>
+        </div>
+
+        <!-- Utility Buttons Under typing box -->
+        <div class="typing-controls">
+          <button id="restart-btn" class="glass-btn primary-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon">
+              <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+            </svg>
+            Restart Test
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Shortcuts -->
+    <footer class="app-footer">
+      <p>💡 Tip: Press <kbd>Tab</kbd> + <kbd>Enter</kbd> to restart instantly.</p>
+    </footer>
+  </div>
+
+  <!-- Results dialog with custom animations -->
+  <dialog id="results-dialog" closedby="any" class="glass-modal-dialog">
+    <div class="dialog-content">
+      <header class="dialog-header">
+        <h2>Test Completed! 🎉</h2>
+        <button class="close-dialog-btn" id="close-results-btn" aria-label="Close dialog">&times;</button>
+      </header>
+      
+      <div class="dialog-body">
+        <div class="trophy-display">
+          <span class="trophy-emoji" id="results-emoji">⚡️</span>
+          <h3 id="results-rank">Typing Specialist</h3>
+        </div>
+
+        <div class="results-grid">
+          <div class="result-card">
+            <span class="res-val" id="res-wpm">65</span>
+            <span class="res-lbl">WPM (Speed)</span>
+          </div>
+          <div class="result-card">
+            <span class="res-val" id="res-accuracy">98%</span>
+            <span class="res-lbl">Accuracy</span>
+          </div>
+          <div class="result-card">
+            <span class="res-val" id="res-chars">325</span>
+            <span class="res-lbl">Correct Chars</span>
+          </div>
+          <div class="result-card">
+            <span class="res-val" id="res-errors">4</span>
+            <span class="res-lbl">Typos</span>
+          </div>
+        </div>
+
+        <!-- Typist Level & Rank Progress (New replacement feature) -->
+        <div class="level-progress-container">
+          <div class="level-header">
+            <span class="level-badge" id="level-badge-tag">LVL 1</span>
+            <h4 id="level-name">Novice Typist</h4>
+          </div>
+          
+          <div class="xp-bar-track">
+            <div class="xp-bar-fill" id="level-xp-fill"></div>
+          </div>
+          
+          <p class="level-next-tip" id="level-next-text">Type 15 WPM to reach Level 2!</p>
+        </div>
+
+        <!-- Mistakes Analysis and Personalized Tips (New) -->
+        <div class="analysis-container">
+          <div class="analysis-header-title">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="analysis-icon">
+              <path d="M12 20h.01M12 16v-4m0-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <h4>Muscle Memory Analysis</h4>
+          </div>
+          
+          <div class="analysis-stats">
+            <div class="analysis-badge-row">
+              <span class="analysis-badge-title">Frequent Mistake:</span>
+              <span class="analysis-badge-val" id="analysis-common-typo">None</span>
+            </div>
+          </div>
+          
+          <div class="analysis-tip-card">
+            <p id="analysis-tip-text">Slow down slightly to practice accurate finger placement. Speed will follow your precision!</p>
+          </div>
+        </div>
+      </div>
+      
+      <footer class="dialog-footer">
+        <button id="dialog-restart-btn" class="glass-btn primary-btn font-bold">Try Again</button>
+      </footer>
+    </div>
+  </dialog>
+
+  <!-- High Scores modal -->
+  <dialog id="stats-dialog" closedby="any" class="glass-modal-dialog">
+    <div class="dialog-content">
+      <header class="dialog-header">
+        <h2>Your Personal Bests 🏆</h2>
+        <button class="close-dialog-btn" id="close-stats-btn" aria-label="Close dialog">&times;</button>
+      </header>
+      
+      <div class="dialog-body">
+        <div class="records-container">
+          <div class="record-row">
+            <div class="record-meta">
+              <span class="record-badge easy-badge">Easy</span>
+              <span class="record-desc">Common small words</span>
+            </div>
+            <div class="record-val"><span id="best-easy">0</span> WPM</div>
+          </div>
+          <div class="record-row">
+            <div class="record-meta">
+              <span class="record-badge medium-badge">Medium</span>
+              <span class="record-desc">Vocabulary & commas</span>
+            </div>
+            <div class="record-val"><span id="best-medium">0</span> WPM</div>
+          </div>
+          <div class="record-row">
+            <div class="record-meta">
+              <span class="record-badge hard-badge">Hard</span>
+              <span class="record-desc">Long words & numbers</span>
+            </div>
+            <div class="record-val"><span id="best-hard">0</span> WPM</div>
+          </div>
+          <div class="record-row">
+            <div class="record-meta">
+              <span class="record-badge easy-badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">Essay</span>
+              <span class="record-desc">Topic-based paragraphs</span>
+            </div>
+            <div class="record-val"><span id="best-essay">0</span> WPM</div>
+          </div>
+        </div>
+        
+        <div class="dialog-info-box">
+          <p>Rankings are saved locally on this browser. Keep typing to level up your speed!</p>
+        </div>
+      </div>
+      
+      <footer class="dialog-footer">
+        <button id="clear-stats-btn" class="glass-btn danger-btn">Reset High Scores</button>
+        <button id="stats-done-btn" class="glass-btn primary-btn">Close</button>
+      </footer>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
